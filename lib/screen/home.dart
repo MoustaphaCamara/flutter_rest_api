@@ -17,6 +17,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Rest API call"),
       ),
+      body: ListView.builder(
+        itemCount: users.length,
+          itemBuilder: (context, index) {
+          final user = users[index];
+          final email = user['email'];
+          return ListTile(
+            title: Text(email),
+          );
+      }),
       floatingActionButton: FloatingActionButton(
         onPressed: fetchUsers,
       ),
@@ -31,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
       print(body);
       final json = jsonDecode(body);
       setState(() {
-      users = json['results'];
-      print("fetchUsers completed");
+        users = json['results'];
+        print("fetchUsers completed");
       });
      }
 }
