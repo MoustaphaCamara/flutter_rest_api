@@ -21,9 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: users.length,
           itemBuilder: (context, index) {
           final user = users[index];
+          final name = '${user['name']["title"]} ${user['name']['last']}';
           final email = user['email'];
+          final image = user['picture']['large'];
+
           return ListTile(
-            title: Text(email),
+            leading: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.network(image)
+            ),
+            title: Text(name),
+            subtitle: Text(email),
           );
       }),
       floatingActionButton: FloatingActionButton(
@@ -33,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
       void fetchUsers() async {
       print("fetchUsers called");
-      const url = "https://randomuser.me/api/?results=2";
+      const url = "https://randomuser.me/api/?results=10";
       final uri = Uri.parse(url);
       final response = await http.get(uri);
       final body = response.body;
