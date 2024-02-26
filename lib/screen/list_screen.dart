@@ -25,8 +25,6 @@ class _ListScreenState extends State<ListScreen> {
       setState(() {
         _currencies =
             json.entries.map((e) => Currency(e.value, e.key)).toList();
-        print(json.entries);
-        print(_currencies);
       });
     }
   }
@@ -36,9 +34,15 @@ class _ListScreenState extends State<ListScreen> {
       return const Center(
           child: CircularProgressIndicator(color: Colors.purple));
     }
-    return ListView(
-      children:
-          _currencies!.map((currency) => Text(currency.toString())).toList(),
+    return ListView.builder(
+      itemCount: _currencies!.length,
+      itemBuilder: (context, index) {
+        final currency = _currencies![index];
+        return ListTile(
+          title: Text('${currency.code} - ${currency.name}'),
+          // trailing: Icon(Icons.arrow_forward),
+        );
+      },
     );
   }
 
