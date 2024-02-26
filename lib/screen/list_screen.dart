@@ -35,7 +35,7 @@ class _ListScreenState extends State<ListScreen> {
           child: CircularProgressIndicator(color: Colors.purple));
     }
     return ListView.builder(
-      itemCount: _currencies!.length,
+      itemCount: _currencies?.length,
       itemBuilder: (context, index) {
         final currency = _currencies![index];
         return ListTile(
