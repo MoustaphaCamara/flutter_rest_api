@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../model/currency.dart';
+import '../model/anime.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -13,33 +13,33 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
-  List<Currency>? _currencies;
+  List<Anime>? animes;
 
-  void _loadData() async {
-    const url = "https://api.frankfurter.app/currencies";
+  void _getAnimes() async {
+    const url = "https://api.jikan.moe/v4/random/anime";
     final response = await http.get(Uri.parse(url));
     final body = response.body;
-    final json =
-        jsonDecode(body); // as Map<String, dynamic>, or try handling the error
+    final json = jsonDecode(body);
+    print(json);
+
     if (json is Map<String, dynamic>) {
       setState(() {
-        _currencies =
-            json.entries.map((e) => Currency(e.value, e.key)).toList();
+        animes = json.entries.map((e) => Anime(e.value)).toList();
       });
     }
   }
 
   Widget _wBody() {
-    if (_currencies == null) {
+    if (animes == null) {
       return const Center(
           child: CircularProgressIndicator(color: Colors.purple));
     }
     return ListView.builder(
-      itemCount: _currencies?.length,
+      itemCount: animes?.length,
       itemBuilder: (context, index) {
-        final currency = _currencies![index];
+        final anime = animes![index];
         return ListTile(
-          title: Text('${currency.code} - ${currency.name}'),
+          title: Text('${anime.data}'),
           // trailing: Icon(Icons.arrow_forward),
         );
       },
@@ -48,14 +48,14 @@ class _ListScreenState extends State<ListScreen> {
 
   @override
   void initState() {
-    _loadData();
+    _getAnimes();
     super.initState();
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("List Api screen"),
+        title: const Text("List screen"),
       ),
       body: _wBody(),
     );
