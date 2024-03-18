@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rest_api/screen/home.dart';
+import 'package:flutter_rest_api/screen/list_screen.dart';
 
-void main(){
+void main() {
   runApp(const MyApp());
 }
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomeScreen(),
+      home: ListScreen(),
     );
   }
 }
