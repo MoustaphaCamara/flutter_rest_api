@@ -38,9 +38,65 @@ class _ListScreenState extends State<ListScreen> {
       itemCount: animes?.length,
       itemBuilder: (context, index) {
         final anime = animes![index];
-        return ListTile(
-          title: Text('${anime.data}'),
-          // trailing: Icon(Icons.arrow_forward),
+        return Card(
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.arrow_drop_down_circle),
+                title: Text('${anime.data['title']}'),
+                subtitle: Text(
+                  'Original : ${anime.data['titles'][1]['title']}',
+                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                ),
+              ),
+              ListTile(
+                leading: Text("${anime.data['type']}"),
+                title: Text("Status - "),
+                subtitle: Text(
+                  "${anime.data['status']}",
+                  style: const TextStyle(color: Colors.green),
+                ),
+                // subtitle: Text("${anime.data['airing']}"),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  '${anime.data['synopsis']}',
+                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.network(anime.data['images']['jpg']['image_url']),
+              ),
+              ButtonBar(
+                alignment: MainAxisAlignment.start,
+                children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: const Color(0xFF6200EE),
+                    ),
+                    onPressed: () {
+                      // Perform some action
+                    },
+                    child: const Text('See on MAL'),
+                  ),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: const Color(0xFF6200EE),
+                    ),
+                    onPressed: () {
+                      // Perform some action
+                    },
+                    child: const Text('Available platforms'),
+                  ),
+                ],
+              ),
+              Image.asset('assets/mobile_wallpaper.jpg'),
+              Image.asset('assets/test.jpg'),
+            ],
+          ),
         );
       },
     );
@@ -55,7 +111,7 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("List screen"),
+        title: const Text("What anime today?"),
       ),
       body: _wBody(),
     );
