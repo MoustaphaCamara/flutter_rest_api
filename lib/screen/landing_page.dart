@@ -11,28 +11,37 @@ class OnboardingPage1 extends StatefulWidget {
 class _OnboardingPage1State extends State<OnboardingPage1> {
   final List<OnboardingPageModel> _pages = [
     OnboardingPageModel(
-      title: 'Anime App - landing page',
-      description: 'Get a random anime to add to your watching list.',
-      imageUrl: 'https://i.ibb.co/vcJzJHf/gojo-render-removebg-preview.png',
-      bgColor: Colors.indigo,
-    ),
-    OnboardingPageModel(
-      title: 'Connect with your friends.',
-      description: 'Connect with your friends anytime anywhere.',
-      imageUrl: 'https://picsum.photos/200/300',
-      bgColor: const Color(0xff1eb090),
-    ),
-    OnboardingPageModel(
-      title: 'Bookmark your favourites',
-      description: 'Bookmark your favourite quotes to read at a leisure time.',
-      imageUrl: 'https://i.ibb.co/420D7VP/building.png',
+      title: 'Anifetch,',
+      description:
+          'fill your list with brand new content. \n Get a random anime to add to your watching list.',
+      imageUrl:
+          'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/197053ad-5569-468b-9a44-9685546c3285/dcjg90g-1463173b-87bb-430e-84d8-3c469915861d.png/v1/fit/w_828,h_850/dragon_ball_png_by_irfanabbasi_dcjg90g-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzQzOCIsInBhdGgiOiJcL2ZcLzE5NzA1M2FkLTU1NjktNDY4Yi05YTQ0LTk2ODU1NDZjMzI4NVwvZGNqZzkwZy0xNDYzMTczYi04N2JiLTQzMGUtODRkOC0zYzQ2OTkxNTg2MWQucG5nIiwid2lkdGgiOiI8PTMzNTEifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.3DiRNigMAlqfne0wUXesoaRzIRNUGKuAINXzanqS1mU',
       bgColor: const Color(0xfffeae4f),
     ),
     OnboardingPageModel(
-      title: 'Follow creators',
-      description: 'Follow your favourite creators to stay in the loop.',
-      imageUrl: 'https://i.ibb.co/cJqsPSB/scooter.png',
-      bgColor: Colors.purple,
+      title: 'Discover the depths of the \n japanese culture.',
+      description:
+          'Go from the lightest easy-going school-life stories, to the darkest gore fantasy story there is.',
+      imageUrl:
+          'https://i.pinimg.com/originals/8e/91/44/8e9144af5fdec0c9fd9a9d60dccc01b5.png',
+      bgColor: Colors.black,
+    ),
+    OnboardingPageModel(
+      title: 'Dive back in your childhood',
+      description:
+          'You will find here stuff that you might have even forgotten about. Be prepared !',
+      imageUrl:
+          'https://i.ibb.co/12ZrdWD/png-clipart-gengar-haunter-pokemon-sun-and-moon-pokedex-gengar-purple-violet-removebg-preview.png',
+      bgColor: const Color.fromRGBO(90, 57, 104, 1),
+      //https://api.flutter.dev/flutter/dart-ui/Color-class.html
+    ),
+    OnboardingPageModel(
+      title: 'Get retro\'ed !',
+      description:
+          'This app includes of course retro stuff you\'d not expect to stumble on',
+      imageUrl:
+          'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d09ac73d-eb31-448c-beb7-5cae85e4df26/dc6ww9b-55cdc595-c39b-478b-b436-3a87ec2a66f7.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QwOWFjNzNkLWViMzEtNDQ4Yy1iZWI3LTVjYWU4NWU0ZGYyNlwvZGM2d3c5Yi01NWNkYzU5NS1jMzliLTQ3OGItYjQzNi0zYTg3ZWMyYTY2ZjcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.3L5elcRJoH1wvjvhl3uilwYHwscrz0P77m6dUF5KDgA',
+      bgColor: Colors.red,
     ),
   ];
 
@@ -52,12 +61,12 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
           child: Column(
             children: [
               Expanded(
-                // Pageview to render each page
+                // PageView to render each page
                 child: PageView.builder(
                   controller: _pageController,
                   itemCount: _pages.length,
                   onPageChanged: (idx) {
-                    // Change current page when pageview changes
+                    // Change current page when pageView changes
                     setState(() {
                       _currentPage = idx;
                     });
