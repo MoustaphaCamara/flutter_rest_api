@@ -23,6 +23,5 @@ class User {
         email = json['email'],
         name = json['name'],
         phone = json['phone'],
-        nat = json['nat']
+        nat = json['nat'];
 }
-
